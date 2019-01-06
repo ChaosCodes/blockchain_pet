@@ -1,0 +1,152 @@
+doctype html
+html
+  head
+    title= PetKeeping
+    meta( charset='UTF-8')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans:400,700', type='text/css')
+    script(src='/javascript/jquery-3.3.1.min.js')
+    link(href="/stylesheets/bootstrap.min.css" rel="stylesheet")
+    link(rel="stylesheet", href="/stylesheets/buttons.css")
+    script(defer src="/javascript/all.js")
+    script(src='/javascript/bootstrap.min.js')
+    link(rel="stylesheet", href="/stylesheets/pet.css")
+    link(rel="stylesheet", href="stylesheets/app.css")
+    script(src='/javascript/pet.js')
+
+  body
+
+    div(class='Signup')
+      if username
+        span=username
+        span=',你好'
+        a(class="quit" href="#") 退出登录
+      else
+        ui
+          a(class="btn btn-default" href="#" role="button" data-toggle="modal" data-target="#register") 注册
+        ui
+          a(class="btn btn-default" href="#" role="button" data-toggle="modal" data-target="#login") 登录
+    div.input-group
+      span="寻找好友"
+      input(type="text" class="form-control" aria-label="...")
+      button(type="button" class="btn btn-default") 添加
+
+    div(class='PetWindows')
+      div(class="name") 
+        span.names
+        span='               以太币值:   '
+        span.monsum 0
+      div(class="life") 健康值  
+        span.health
+        div(class="progress life-progress" )
+          div(class="healthpro progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" )
+            span(class="sr-only") health
+      div(class="life") 饱腹值  
+        span.hungerfull
+        div(class="progress life-progress" )
+          div(class="fullpro progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" aria-valuemax="100" )
+            span(class="sr-only") full
+
+      div(class="pet")
+        button(class="button button-highlight button-circle button-giant button-longshadow-right button-longshadow-expand petbuttonEat")
+          i(class="fas fa-drumstick-bite")
+        button(class="button button-action button-circle button-giant  petbuttonCap")
+          i(class="fas fa-capsules")
+        button(class="button button-action button-circle button-giant exercises")
+          i(class="fas fa-running")
+        img(class="petPic" src="pic/8.png" alt="")
+      div(class="")
+    div(class='list-group friendsList')
+      a(href="#" class="list-group-item active") 好友
+      a(href="#friends" class="list-group-item" data-toggle="collapse")
+        i(class="fas fa-address-book")
+        span 好友
+        span(class="pull-right glyphicon glyphicon-chevron-toggle")
+      ul(id="friends" class="nav nav-list collapse secondmenu" style="height: 0px;")
+        each f in firends
+          ul(class="nav nav-pills")
+            li(role="presentation" class="dropdown")
+              a(class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false")
+                img(src="pic/dog.png" alt="" width="30px" height="30px") 
+                span='     '+f+'     '
+                span(class="caret")
+              ul(class="dropdown-menu")
+                li
+                  a(href="#") 拜访
+                li
+                  a(href="#") 喂食
+      a(href="#asklist" class="list-group-item" data-toggle="collapse")
+        i(class="fas fa-address-book")
+        span 申请好友列表
+        span(class="pull-right glyphicon glyphicon-chevron-toggle")
+      ul(id="asklist" class="nav nav-list collapse secondmenu" style="height: 0px;")
+        each f in askfirends
+          ul(class="nav nav-pills")
+            li(role="presentation" class="dropdown")
+              a(class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false")
+                img(src="pic/dog.png" alt="" width="30px" height="30px")
+                span='     '+f+'     '
+                span(class="caret")
+              ul(class="dropdown-menu")
+                li
+                  a(href="#") 通过好友申请
+                li
+                  a(href="#") 拒绝
+      a(href="#receive" class="list-group-item" data-toggle="collapse")
+        i(class="fas fa-address-book")
+        span 待接受列表
+        span(class="pull-right glyphicon glyphicon-chevron-toggle")
+      ul(id="receive" class="nav nav-list collapse secondmenu" style="height: 0px;")
+        each f in receivefirends
+          ul(class="nav nav-pills")
+            li(role="presentation" class="dropdown")
+              a(class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false")
+                img(src="pic/dog.png" alt="" width="30px" height="30px")
+                span='     '+f+'     '
+
+
+
+    div(id="register" class="modal fade" tabindex="-1")
+      div(class="modal-dialog")
+        div(class="modal-content")
+          div(class="modal-body")
+            button(class="close" data-dismiss="modal")
+              span &times;
+          div(class="modal-title")
+            h1(class="text-center") 注册
+          div(class="modal-body")
+            form(action="" class="form-group")
+              div(class="form-group")
+                label(for="") 用户名
+                input(class="form-control" type="text" id="regid" placeholder="6-15位字母或数字")
+              div(class="form-group")
+                label(for="") 密码
+                input(class="form-control" type="password" id="regpass" placeholder="至少6位字母或数字")
+              div(class="form-group")
+                label(for="") 再次输入密码
+                input(class="form-control" type="password" id="regpassag" placeholder="至少6位字母或数字")
+              div(class="text-right")
+                button(class="btn btn-primary" type="submit" id="regsubmit") 提交
+                button(class="btn btn-danger" data-dismiss="modal") 取消
+              a(href="" data-toggle="modal" data-dismiss="modal" data-target="#login") 已有账号？点我登录
+
+    div(id="login" class="modal fade")
+      div(class="modal-dialog")
+        div(class="modal-content")
+          div(class="modal-body")
+            button(class="close" data-dismiss="modal")
+              span &times;
+          div(class="modal-title")
+            h1(class="text-center") 登录
+          div(class="modal-body")
+            from( id="loginForm" class="form-group" action="/auth/login" method="post")
+              div(class="form-group")
+                label(for="") 用户名
+                input(class="form-control" id="logid" type="text" name="username" placeholder="")
+              div(class="form-group")
+                label(for="") 密码
+                input(class="form-control" id="logpass" type="password" name="password" placeholder="")
+              div(class="text-right")
+                button(class="btn btn-primary" type="submit" id="loginsubmit") 登录
+                button(class="btn btn-danger" data-dismiss="modal") 取消
+              a(href="" data-toggle="modal" data-dismiss="modal" data-target="#register") 还没有账号？点我注册
+

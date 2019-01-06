@@ -1,0 +1,71 @@
+doctype html
+html
+  head
+    title= title
+    meta( charset='UTF-8')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Open+Sans:400,700', type='text/css')
+    script(src='/javascript/jquery-3.3.1.min.js')
+    link(href="/stylesheets/bootstrap.min.css" rel="stylesheet")
+    link(rel="stylesheet", href="/stylesheets/buttons.css")
+    script(defer src="/javascript/all.js")
+    script(src='/javascript/bootstrap.min.js')
+    link(rel="stylesheet", href="/stylesheets/pet.css")
+    link(rel="stylesheet", href="stylesheets/app.css")
+    link(rel="stylesheet", href="stylesheets/signup.css")
+
+  body
+    ul(class="nav navbar-nav navbar-right")
+      li
+        a(data-toggle="modal" data-target="#register" href="")
+          span(class="glyphicon glyphicon-user") 注册
+      li
+        a(data-toggle="modal" data-target="#login" href="")
+          span(class="glyphicon glyphicon-log-in") 登录
+    
+    //<!-- 注册窗口 -->
+    div(id="register" class="modal fade" tabindex="-1")
+      div(class="modal-dialog")
+        div(class="modal-content")
+          div(class="modal-body")
+            button(class="close" data-dismiss="modal")
+              span &times;
+          div(class="modal-title")
+            h1(class="text-center") 注册
+          div(class="modal-body")
+            form(action="" class="form-group")
+              div(class="form-group")
+                label(for="") 用户名
+                input(class="form-control" type="text" placeholder="6-15位字母或数字")
+              div(class="form-group")
+                label(for="") 密码
+                input(class="form-control" type="password" placeholder="至少6位字母或数字")
+              div(class="form-group")
+                label(for="") 再次输入密码
+                input(class="form-control" type="password" placeholder="至少6位字母或数字")
+              div(class="text-right")
+                button(class="btn btn-primary" type="submit") 提交
+                button(class="btn btn-danger" data-dismiss="modal") 取消
+              a(href="" data-toggle="modal" data-dismiss="modal" data-target="#login") 已有账号？点我登录
+
+
+    // <!-- 登录窗口 -->
+    div(id="login" class="modal fade")
+      div(class="modal-dialog")
+        div(class="modal-content")
+          div(class="modal-body")
+            button(class="close" data-dismiss="modal")
+              span &times;
+          div(class="modal-title")
+            h1(class="text-center") 登录
+          div(class="modal-body")
+            from(class="form-group" action="")
+              div(class="form-group")
+                label(for="") 用户名
+                input(class="form-control" type="text" placeholder="")
+              div(class="form-group")
+                label(for="") 密码
+                input(class="form-control" type="password" placeholder="")
+              div(class="text-right")
+                button(class="btn btn-primary" type="submit") 登录
+                button(class="btn btn-danger" data-dismiss="modal") 取消
+              a(href="" data-toggle="modal" data-dismiss="modal" data-target="#register") 还没有账号？点我注册
