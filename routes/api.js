@@ -16,8 +16,9 @@ router.get("/getBalance", async (ctx, next) => {
   if (ctx.session.user) {
     const addr = ctx.session.user.address
     balance = await web3.eth.getBalance(addr);
+    
   }
-  ctx.body = balance
+  ctx.body = web3.utils.fromWei(balance, 'ether');
 });
 
 router.post('/createPet', async (ctx, next) => {

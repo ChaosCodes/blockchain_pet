@@ -25,36 +25,34 @@ html
           a(class="btn btn-default" href="#" role="button" data-toggle="modal" data-target="#register") 注册
         ui
           a(class="btn btn-default" href="#" role="button" data-toggle="modal" data-target="#login") 登录
-    div.input-group
-      span="寻找好友"
-      input(type="text" class="form-control" aria-label="...")
-      button(type="button" class="btn btn-default") 添加
 
     div(class='PetWindows')
       div(class="name") 
-        span.names
-        span='               以太币值:   '
+        span="姓名: "
+        span.names 未登录
+        
+      div(class="life") 以太币值:   
         span.monsum 0
+        span=" ether"
+      br
       div(class="life") 健康值  
-        span.health
-        div(class="progress life-progress" )
-          div(class="healthpro progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" )
-            span(class="sr-only") health
+        span.health 0
+        span='/100'
+      br
       div(class="life") 饱腹值  
-        span.hungerfull
-        div(class="progress life-progress" )
-          div(class="fullpro progress-bar progress-bar-info" role="progressbar" aria-valuemin="0" aria-valuemax="100" )
-            span(class="sr-only") full
+        span.hungerfull 0
+        span='/100'
+      
+      if username
+        div(class="pet")
+          button(class="button button-highlight button-circle button-giant button-longshadow-right button-longshadow-expand petbuttonEat")
+            i(class="fas fa-drumstick-bite")
+          button(class="button button-action button-circle button-giant  petbuttonCap")
+            i(class="fas fa-capsules")
+          button(class="button button-action button-circle button-giant exercises")
+            i(class="fas fa-running")
+          img(class="petPic" src="pic/8.png" alt="")
 
-      div(class="pet")
-        button(class="button button-highlight button-circle button-giant button-longshadow-right button-longshadow-expand petbuttonEat")
-          i(class="fas fa-drumstick-bite")
-        button(class="button button-action button-circle button-giant  petbuttonCap")
-          i(class="fas fa-capsules")
-        button(class="button button-action button-circle button-giant exercises")
-          i(class="fas fa-running")
-        img(class="petPic" src="pic/8.png" alt="")
-      div(class="")
     div(class='list-group friendsList')
       a(href="#" class="list-group-item active") 好友
       a(href="#friends" class="list-group-item" data-toggle="collapse")

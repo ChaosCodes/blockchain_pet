@@ -1,13 +1,6 @@
 
 $(document).ready(function () {
-  // var curraccount;
-  // var selectedAccount;
-  // $.get('/getAccounts', function (response) {
-  //   for(let i = 0; i < response.length; i++){
-  //     curraccount = response[i];
-  //     $('#options').append("<option value='"+curraccount+"'>"+curraccount+"</option>");
-  //   }
-  // })
+  
   getpetInfo();
   setInterval(function(){
     getpetInfo();
@@ -103,8 +96,8 @@ function check(){
 
   $.post("auth/login",
   {
-    username:"abc",
-    password:"abc"
+    username: user_id,
+    password: pass
   },
   function(data,status){
     if (data.value) {
@@ -119,7 +112,9 @@ function check(){
 
 function getpetInfo() {
   $.get("/api/petInfo", function(data,status){
+    console.log(data.value)
     if (data == null) return;
+    if (data.value !== undefined && !data.value) return;
     $(".names").text(data[4])
     $(".health").text(data[1])
     $(".hungerfull").text(data[2])
@@ -130,6 +125,8 @@ function getpetInfo() {
   
   $.get("/api/getBalance", function(data,status){
     if (data == null) return;
+    console.log(data)
+    if (data.value !== undefined && !data.value) return;
     $(".monsum").text(data)
   });
 
